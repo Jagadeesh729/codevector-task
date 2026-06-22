@@ -8,6 +8,12 @@ app.use(express.json());
 
 const productRoutes = require("./src/routes/productRoutes");
 
+app.get("/check-env", (req, res) => {
+  res.json({
+    databaseExists: !!process.env.DATABASE_URL
+  });
+});
+
 app.use("/products", productRoutes);
 
 const PORT = process.env.PORT || 5000;
