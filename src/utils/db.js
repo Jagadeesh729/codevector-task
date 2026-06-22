@@ -1,15 +1,13 @@
 const { PrismaClient } = require("@prisma/client");
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL missing");
-}
+console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
 
 const prisma = new PrismaClient({
   datasources: {
     db: {
-      url: process.env.DATABASE_URL,
-    },
-  },
+      url: process.env.DATABASE_URL
+    }
+  }
 });
 
 module.exports = prisma;
